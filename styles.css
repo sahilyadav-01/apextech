@@ -1407,3 +1407,269 @@ button { cursor: pointer; border: none; background: none; }
   .contact-form-wrap { padding: 24px; }
   .contact-info-card { padding: 28px; }
 }
+
+/* ========================================
+   SERVICE IMAGE CARDS GRID
+   (8 services — instrumentation-solutions.com style)
+   ======================================== */
+.svc-img-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+.svc-img-card {
+  background: var(--navy-800);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(59,130,246,0.12);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+.svc-img-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 56px rgba(29,78,216,0.25);
+  border-color: rgba(59,130,246,0.4);
+}
+.svc-img-wrap {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  background: var(--navy-700);
+}
+.svc-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  display: block;
+}
+.svc-img-card:hover .svc-img { transform: scale(1.06); }
+.svc-img-gradient {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.svc-grad-vibration { background: linear-gradient(135deg, #1a3057, #1D4ED8); }
+.svc-grad-earthquake { background: linear-gradient(135deg, #0f2040, #0e4d3a); }
+.svc-icon-large {
+  font-size: 64px;
+  opacity: 0.85;
+  transition: transform 0.4s ease;
+}
+.svc-img-card:hover .svc-icon-large { transform: scale(1.15); }
+.svc-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(13,27,53,0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.svc-img-card:hover .svc-img-overlay { opacity: 1; }
+.btn-svc-img-enquire {
+  background: var(--blue-600);
+  color: var(--white);
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: background 0.2s, transform 0.2s;
+}
+.btn-svc-img-enquire:hover { background: var(--blue-500); transform: scale(1.04); }
+.svc-img-body { padding: 20px; }
+.svc-img-title {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.svc-img-desc {
+  font-size: 13px;
+  color: var(--slate-400);
+  line-height: 1.65;
+  margin-bottom: 12px;
+}
+.svc-img-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 14px;
+}
+.svc-img-tags li {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--blue-300);
+  background: rgba(59,130,246,0.12);
+  border: 1px solid rgba(59,130,246,0.2);
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.svc-enquire-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--blue-400);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.2s, gap 0.2s;
+}
+.svc-enquire-link:hover { color: var(--blue-300); gap: 8px; }
+
+/* ========================================
+   HOW WE WORK — Numbered Process Steps
+   ======================================== */
+.how-we-work {
+  margin-top: 72px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(59,130,246,0.2);
+}
+.hww-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  min-height: 480px;
+}
+.hww-header-col {
+  padding: 56px 48px;
+  background: linear-gradient(135deg, #1D4ED8, #2563EB);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+.hww-title {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.2;
+}
+.hww-title span { color: rgba(255,255,255,0.82); }
+.hww-subtitle { font-size: 15px; color: rgba(255,255,255,0.75); line-height: 1.7; }
+.hww-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+.hww-actions .btn-primary { background: var(--white); color: #1D4ED8; }
+.hww-actions .btn-primary:hover { background: var(--slate-100); }
+.hww-actions .btn-secondary { border-color: rgba(255,255,255,0.45); }
+.hww-steps-col {
+  padding: 40px 48px 40px 40px;
+  background: linear-gradient(135deg, #0A1628, #0F2040);
+  display: flex;
+  flex-direction: column;
+}
+.hww-step {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 22px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: padding-left 0.25s ease;
+}
+.hww-step:last-child { border-bottom: none; }
+.hww-step:hover { padding-left: 8px; }
+.hww-num {
+  font-family: var(--font-display);
+  font-size: 44px;
+  font-weight: 800;
+  color: rgba(59,130,246,0.2);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 58px;
+  letter-spacing: -0.02em;
+  transition: color 0.25s ease;
+}
+.hww-step:hover .hww-num { color: var(--blue-400); }
+.hww-step-body { flex: 1; }
+.hww-step-body h4 {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.07em;
+  margin-bottom: 7px;
+  transition: color 0.25s ease;
+}
+.hww-step:hover .hww-step-body h4 { color: var(--blue-300); }
+.hww-step-body p { font-size: 13.5px; color: var(--slate-400); line-height: 1.65; }
+
+/* ========================================
+   SERVICE CTA BANNER
+   ======================================== */
+.service-cta-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  background: linear-gradient(135deg, #1D4ED8, #1a3057);
+  border-radius: 16px;
+  padding: 40px 48px;
+  margin-top: 48px;
+}
+.scta-content h3 {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.scta-content p { font-size: 15px; color: rgba(255,255,255,0.75); }
+.scta-actions { display: flex; gap: 12px; flex-shrink: 0; flex-wrap: wrap; }
+.btn-scta-call {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 24px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: var(--white);
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.btn-scta-call:hover { background: rgba(255,255,255,0.2); }
+.btn-scta-enquire {
+  display: inline-flex;
+  align-items: center;
+  padding: 13px 24px;
+  background: var(--white);
+  color: #1D4ED8;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+.btn-scta-enquire:hover { background: var(--slate-100); transform: translateY(-1px); }
+
+/* Responsive — new service cards */
+@media (max-width: 1200px) { .svc-img-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 1024px) {
+  .svc-img-grid { grid-template-columns: repeat(2, 1fr); }
+  .hww-inner { grid-template-columns: 1fr; }
+  .hww-header-col { padding: 40px 32px; }
+  .hww-steps-col { padding: 32px; }
+  .service-cta-banner { padding: 32px; }
+}
+@media (max-width: 768px) {
+  .svc-img-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .hww-num { font-size: 36px; width: 44px; }
+  .hww-title { font-size: 28px; }
+  .service-cta-banner { flex-direction: column; text-align: center; padding: 28px 20px; }
+  .scta-actions { justify-content: center; }
+}
+@media (max-width: 480px) {
+  .svc-img-grid { grid-template-columns: 1fr; }
+  .hww-header-col, .hww-steps-col { padding: 24px 18px; }
+}
