@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { LayoutDashboard, Calendar, Users, Briefcase, FileText, BarChart3, Edit3, Image, Shield } from 'lucide-react';
+import { LayoutDashboard, Calendar, Users, Briefcase, FileText, BarChart3, Edit3, Image, Shield, Sliders } from 'lucide-react';
 import { AdminDashboard } from '../../../pages/v3/Admin/AdminDashboard';
 import { BookingsManager } from '../../../pages/v3/Admin/BookingsManager';
 import { CrmManager } from '../../../pages/v3/Admin/CrmManager';
@@ -9,6 +9,7 @@ import { AnalyticsReports } from '../../../pages/v3/Admin/AnalyticsReports';
 import { BlogCMS } from '../../../pages/v3/Admin/BlogCMS';
 import { GalleryManager } from '../../../pages/v3/Admin/GalleryManager';
 import { RolesSettings } from '../../../pages/v3/Admin/RolesSettings';
+import { DmxConsole } from '../../../pages/v3/Admin/DmxConsole';
 
 
 export const AdminLayout: React.FC = () => {
@@ -17,6 +18,7 @@ export const AdminLayout: React.FC = () => {
   const tabs = [
     { id: 'dashboard', label: 'Dashboard', icon: <LayoutDashboard className="w-4 h-4" /> },
     { id: 'bookings', label: 'Bookings', icon: <Calendar className="w-4 h-4" /> },
+    { id: 'dmx', label: 'DMX Laser Console', icon: <Sliders className="w-4 h-4" /> },
     { id: 'customers', label: 'Customers (CRM)', icon: <Users className="w-4 h-4" /> },
     { id: 'employees', label: 'Employees', icon: <Briefcase className="w-4 h-4" /> },
     { id: 'invoices', label: 'Invoices', icon: <FileText className="w-4 h-4" /> },
@@ -53,6 +55,7 @@ export const AdminLayout: React.FC = () => {
       <div>
         {activeTab === 'dashboard' && <AdminDashboard />}
         {activeTab === 'bookings' && <BookingsManager />}
+        {activeTab === 'dmx' && <DmxConsole />}
         {activeTab === 'customers' && <CrmManager />}
         {activeTab === 'employees' && <EmployeeManager />}
         {activeTab === 'invoices' && <InvoiceManager />}
