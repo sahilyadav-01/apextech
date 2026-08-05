@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Search, X, Calendar, Package, Sparkles, User, FileText, ArrowRight } from 'lucide-react';
-import { useV3Store } from '../../store/v3Store';
+import { Search, X, Package, Sparkles, User, FileText, ArrowRight } from 'lucide-react';
+import { useV3Store } from '../../../store/v3Store';
 import { useNavigate } from 'react-router-dom';
 
 export const GlobalSearchModal: React.FC = () => {
-  const { isSearchOpen, setSearchOpen, packages, services, galleryItems, blogs, employees } = useV3Store();
+  const { isSearchOpen, setSearchOpen, packages, services, blogs, employees } = useV3Store();
   const [query, setQuery] = useState('');
   const navigate = useNavigate();
 
@@ -24,11 +24,11 @@ export const GlobalSearchModal: React.FC = () => {
 
   if (!isSearchOpen) return null;
 
-  const filteredPackages = packages.filter(p => p.name.toLowerCase().includes(query.toLowerCase()) || p.category.toLowerCase().includes(query.toLowerCase()));
-  const filteredServices = services.filter(s => s.name.toLowerCase().includes(query.toLowerCase()) || s.description.toLowerCase().includes(query.toLowerCase()));
-  const filteredGallery = galleryItems.filter(g => g.title.toLowerCase().includes(query.toLowerCase()) || g.category.toLowerCase().includes(query.toLowerCase()));
-  const filteredBlogs = blogs.filter(b => b.title.toLowerCase().includes(query.toLowerCase()) || b.category.toLowerCase().includes(query.toLowerCase()));
-  const filteredEmployees = employees.filter(e => e.name.toLowerCase().includes(query.toLowerCase()) || e.role.toLowerCase().includes(query.toLowerCase()));
+  const filteredPackages = packages.filter((p) => p.name.toLowerCase().includes(query.toLowerCase()) || p.category.toLowerCase().includes(query.toLowerCase()));
+  const filteredServices = services.filter((s) => s.name.toLowerCase().includes(query.toLowerCase()) || s.description.toLowerCase().includes(query.toLowerCase()));
+  const filteredBlogs = blogs.filter((b) => b.title.toLowerCase().includes(query.toLowerCase()) || b.category.toLowerCase().includes(query.toLowerCase()));
+  const filteredEmployees = employees.filter((e) => e.name.toLowerCase().includes(query.toLowerCase()) || e.role.toLowerCase().includes(query.toLowerCase()));
+
 
   const handleSelect = (path: string) => {
     setSearchOpen(false);

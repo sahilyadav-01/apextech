@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Sparkles, X, Check, DollarSign, Users, MapPin, Calendar, ArrowRight } from 'lucide-react';
-import { useV3Store } from '../../store/v3Store';
+import { Sparkles, X, ArrowRight } from 'lucide-react';
+import { useV3Store } from '../../../store/v3Store';
 import { Button } from './Button';
-import { AiRecommendationResult } from '../../types/v3';
+import type { AiRecommendationResult } from '../../../types/v3';
+
 
 export const AiRecommendationModal: React.FC = () => {
   const { isAiModalOpen, setAiModalOpen, generateAiRecommendation, setPaymentModalOpen, createBooking, customers } = useV3Store();

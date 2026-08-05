@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import {
+import type {
   User,
   CustomerCRM,
   Booking,
@@ -13,8 +13,10 @@ import {
   AppNotification,
   Invoice,
   AiRecommendationRequest,
-  AiRecommendationResult
+  AiRecommendationResult,
+  DailyTask
 } from '../types/v3';
+
 
 interface V3State {
   // Current Auth User

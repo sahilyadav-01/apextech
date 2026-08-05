@@ -1,7 +1,8 @@
 import React from 'react';
-import { X, Printer, Download, CheckCircle, QrCode } from 'lucide-react';
-import { useV3Store } from '../../store/v3Store';
+import { X, Printer, QrCode, CheckCircle } from 'lucide-react';
+import { useV3Store } from '../../../store/v3Store';
 import { Button } from './Button';
+
 
 export const InvoicePdfModal: React.FC = () => {
   const { isInvoiceModalOpen, setInvoiceModalOpen, activeInvoice } = useV3Store();
