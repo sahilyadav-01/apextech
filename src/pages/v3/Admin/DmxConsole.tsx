@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Sliders, Sparkles, Sun, Zap, Cloud, Play, Pause, Save, RotateCcw, Activity } from 'lucide-react';
+import { Sliders, Sun, Zap, Cloud, Play, Pause, Save, RotateCcw, Activity } from 'lucide-react';
 import { GlassCard } from '../../../components/v3/ui/GlassCard';
 import { Button } from '../../../components/v3/ui/Button';
 import { useV3Store } from '../../../store/v3Store';

@@ -1,13 +1,14 @@
-import React from 'react';
-import { Printer } from 'lucide-react';
+import React, { useState } from 'react';
+import { Printer, Sparkles } from 'lucide-react';
 import { useV3Store } from '../../../store/v3Store';
 import { GlassCard } from '../../../components/v3/ui/GlassCard';
 import { Button } from '../../../components/v3/ui/Button';
 import { WhatsAppActionBtn } from '../../../components/v3/ui/WhatsAppActionBtn';
-
+import { DmxConsole } from '../Admin/DmxConsole';
 
 export const CustomerPortal: React.FC = () => {
   const { bookings, invoices, setPaymentModalOpen, setInvoiceModalOpen } = useV3Store();
+  const [dmxPreviewOpen, setDmxPreviewOpen] = useState(false);
   const customerBooking = bookings[0]; // Active customer demo booking
 
   return (
@@ -59,12 +60,20 @@ export const CustomerPortal: React.FC = () => {
             <span className="text-slate-400 ml-4">Remaining Balance Due: <strong className="text-amber-400">${customerBooking.remainingAmount.toLocaleString()}</strong></span>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             {customerBooking.remainingAmount > 0 && (
               <Button variant="primary" size="sm" onClick={() => setPaymentModalOpen(true, customerBooking)}>
                 Pay Remaining Balance
               </Button>
             )}
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setDmxPreviewOpen(true)}
+              icon={<Sparkles className="w-4 h-4 text-amber-400" />}
+            >
+              Preview Stage Lightshow
+            </Button>
             <Button
               variant="outline"
               size="sm"
@@ -79,6 +88,23 @@ export const CustomerPortal: React.FC = () => {
           </div>
         </div>
       </GlassCard>
+
+      {/* Stage Lightshow Preview Modal */}
+      {dmxPreviewOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md animate-fade-in">
+          <div className="relative w-full max-w-5xl bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto">
+            <button
+              onClick={() => setDmxPreviewOpen(false)}
+              className="absolute top-4 right-4 text-slate-400 hover:text-slate-200 text-xs font-semibold border border-slate-800 bg-slate-950/90 py-1.5 px-3 rounded-lg hover:border-slate-700 transition-all cursor-pointer z-10"
+            >
+              ✕ Close Live Preview
+            </button>
+            <div className="pt-6">
+              <DmxConsole />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
