@@ -7,43 +7,49 @@ export default {
   theme: {
     extend: {
       colors: {
-        navy: {
-          950: '#060B18',
-          900: '#0A1628',
-          800: '#0F2040',
-          700: '#1A3357',
-          600: '#1E3A5F',
+        gold: {
+          400: '#FACC15',
+          500: '#EAB308',
+          600: '#CA8A04',
+          700: '#A16207',
+          glow: '#F59E0B',
         },
-        brand: {
-          blue: '#3B82F6',
-          lightBlue: '#00B4D8',
-          accent: '#3A86FF',
-          darkBlue: '#1D4ED8',
-        },
-        slate: {
-          900: '#0F172A',
-          800: '#1E293B',
-          700: '#334155',
-          600: '#475569',
-          400: '#94A3B8',
-          300: '#CBD5E1',
-          200: '#E2E8F0',
-          100: '#F1F5F9',
+        luxury: {
+          dark: '#090D16',
+          card: '#111827',
+          glass: 'rgba(255, 255, 255, 0.05)',
+          accent: '#D97706',
+          gold: '#F59E0B',
+          emerald: '#10B981',
+          rose: '#F43F5E',
         }
       },
       fontFamily: {
-        display: ['Outfit', 'sans-serif'],
-        sans: ['Inter', 'sans-serif'],
+        playfair: ['"Playfair Display"', 'serif'],
+        poppins: ['"Poppins"', 'sans-serif'],
+        inter: ['"Inter"', 'sans-serif'],
+        display: ['"Playfair Display"', 'serif'],
+        sans: ['"Poppins"', 'sans-serif'],
       },
       borderRadius: {
-        'xl': '16px',
-        '2xl': '20px',
+        'sm': '6px',
+        'md': '12px',
+        'lg': '20px',
+        'xl': '28px',
+        '2xl': '36px',
+      },
+      boxShadow: {
+        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
+        'luxury': '0 20px 50px rgba(0, 0, 0, 0.5), 0 0 20px rgba(245, 158, 11, 0.1)',
+        'glow-gold': '0 0 25px rgba(245, 158, 11, 0.35)',
+        'glow-emerald': '0 0 25px rgba(16, 185, 129, 0.35)',
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-out forwards',
         'slide-up': 'slideUp 0.6s ease-out forwards',
         'zoom-in': 'zoomIn 0.5s ease-out forwards',
-        'marquee': 'marquee 30s linear infinite',
+        'pulse-glow': 'pulseGlow 2s infinite ease-in-out',
+        'shimmer': 'shimmer 2s linear infinite',
       },
       keyframes: {
         fadeIn: {
@@ -58,12 +64,17 @@ export default {
           '0%': { transform: 'scale(0.95)', opacity: '0' },
           '100%': { transform: 'scale(1)', opacity: '1' },
         },
-        marquee: {
-          '0%': { transform: 'translateX(0%)' },
-          '100%': { transform: 'translateX(-50%)' }
+        pulseGlow: {
+          '0%, 100%': { opacity: '0.4' },
+          '50%': { opacity: '0.9' },
+        },
+        shimmer: {
+          '0%': { backgroundPosition: '-200% 0' },
+          '100%': { backgroundPosition: '200% 0' },
         }
       }
     },
   },
   plugins: [],
 }
+
