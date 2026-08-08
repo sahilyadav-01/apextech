@@ -1,15 +1,33 @@
-import React from 'react';
-import { Sparkles, ArrowRight, Star, Play, Camera, Video } from 'lucide-react';
+import React, { useState } from 'react';
+import { Sparkles, ArrowRight, Star, Play, Camera, Video, ChevronDown, HelpCircle, ShieldCheck, Compass } from 'lucide-react';
 import { useV3Store } from '../../../store/v3Store';
 import { GlassCard } from '../../../components/v3/ui/GlassCard';
 import { Button } from '../../../components/v3/ui/Button';
 import { useNavigate } from 'react-router-dom';
 
-
 export const LuxuryHomePage: React.FC = () => {
   const { setAiModalOpen, setPaymentModalOpen, packages, galleryItems, reviews, bookings } = useV3Store();
   const navigate = useNavigate();
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
 
+  const faqs = [
+    {
+      q: 'How does the AI Decor Architect generate stage recommendations?',
+      a: 'Our proprietary generative spatial engine analyzes your venue length, guest count, ceiling clearance, and theme preferences to compute optimal stage truss dimensions, floral stem density, and DMX channel presets.',
+    },
+    {
+      q: 'Can we customize lighting colors and lasers during live event execution?',
+      a: 'Yes! Our DMX Laser Console supports real-time wireless channel control, allowing audio-reactive light sweeps, strobe intensity shifts, and fog machine volume management on the fly.',
+    },
+    {
+      q: 'How are instant PDF tax invoices and WhatsApp confirmations handled?',
+      a: 'Upon booking confirmation or balance payment, our automated billing service generates an official tax PDF invoice with breakdown itemization and dispatches a copy directly to your WhatsApp concierge chat.',
+    },
+    {
+      q: 'Are all stage trussing and aerial rigs structurally certified for safety?',
+      a: 'Absolutely. All aluminum trussing, kinetic winches, and floral backdrops meet ISO 9001 and European structural safety standards, backed by $10M liability insurance.',
+    },
+  ];
 
   return (
     <div className="space-y-20 pb-16 font-poppins">
@@ -168,10 +186,9 @@ export const LuxuryHomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Social Media Integration (Instagram, YouTube, Google Reviews) */}
+      {/* Social Media Integration */}
       <section className="max-w-7xl mx-auto px-4 space-y-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Instagram Feed */}
           <GlassCard hoverEffect={false} className="space-y-4">
             <div className="flex items-center gap-2 text-rose-400 font-bold text-sm">
               <Camera className="w-5 h-5" /> Live Instagram Feed (@ApexEventsV3)
@@ -184,7 +201,6 @@ export const LuxuryHomePage: React.FC = () => {
             </div>
           </GlassCard>
 
-          {/* YouTube Video Tour */}
           <GlassCard hoverEffect={false} className="space-y-4">
             <div className="flex items-center gap-2 text-rose-500 font-bold text-sm">
               <Video className="w-5 h-5" /> YouTube 4K Stage Walkthroughs
@@ -201,7 +217,6 @@ export const LuxuryHomePage: React.FC = () => {
             <p className="text-xs text-slate-300 font-medium">Starlight Symphony Concert 40kW Sound Test (4K 60FPS)</p>
           </GlassCard>
 
-          {/* Google Reviews */}
           <GlassCard hoverEffect={false} className="space-y-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2 text-amber-400 font-bold text-sm">
@@ -223,6 +238,65 @@ export const LuxuryHomePage: React.FC = () => {
           </GlassCard>
         </div>
       </section>
+
+      {/* Interactive FAQ Accordion Section */}
+      <section className="max-w-4xl mx-auto px-4 space-y-8">
+        <div className="text-center space-y-2">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-amber-400 text-xs font-semibold">
+            <HelpCircle className="w-4 h-4 text-amber-400" /> Customer Clarity &amp; FAQs
+          </div>
+          <h2 className="text-3xl font-heading font-bold text-slate-100">Frequently Asked Questions</h2>
+        </div>
+
+        <div className="space-y-3">
+          {faqs.map((faq, idx) => {
+            const isOpen = openFaqIndex === idx;
+            return (
+              <div
+                key={idx}
+                className="bg-slate-900/90 border border-slate-800 rounded-xl overflow-hidden transition-all duration-300"
+              >
+                <button
+                  onClick={() => setOpenFaqIndex(isOpen ? null : idx)}
+                  className="w-full flex items-center justify-between p-4 text-left font-semibold text-slate-100 text-sm hover:text-amber-400 transition-colors"
+                >
+                  <span>{faq.q}</span>
+                  <ChevronDown className={`w-5 h-5 text-amber-400 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
+                </button>
+
+                {isOpen && (
+                  <div className="px-4 pb-4 text-xs text-slate-300 leading-relaxed border-t border-slate-800/60 pt-3 animate-fade-in">
+                    {faq.a}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* VIP Bottom Call To Action Banner */}
+      <section className="max-w-7xl mx-auto px-4">
+        <GlassCard goldBorder hoverEffect={false} className="p-8 sm:p-12 text-center space-y-6 relative overflow-hidden">
+          <div className="absolute -right-16 -top-16 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+          <h2 className="text-3xl sm:text-5xl font-heading font-extrabold text-slate-100">
+            Ready to Stage Your <span className="gold-gradient-text">Royal Event</span>?
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto">
+            Experience sub-second AI decor recommendations, real-time DMX light orchestration, and 24/7 dedicated VIP concierge.
+          </p>
+
+          <div className="flex flex-wrap justify-center items-center gap-4 pt-2">
+            <Button variant="primary" size="lg" onClick={() => navigate('/contact')} icon={<Sparkles className="w-5 h-5" />}>
+              Get Custom Consultation
+            </Button>
+            <Button variant="outline" size="lg" onClick={() => navigate('/ai-planner')} icon={<Compass className="w-5 h-5" />}>
+              Try AI Decor Planner
+            </Button>
+          </div>
+        </GlassCard>
+      </section>
     </div>
   );
 };
+
