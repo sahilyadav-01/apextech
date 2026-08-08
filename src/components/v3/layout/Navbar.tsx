@@ -16,9 +16,12 @@ export const Navbar: React.FC = () => {
     { name: 'Packages', path: '/services' },
     { name: 'Gallery', path: '/gallery' },
     { name: 'AI Planner', path: '/ai-planner' },
+    { name: 'Case Studies', path: '/projects' },
     { name: 'Journal', path: '/blogs' },
+    { name: 'About Us', path: '/about' },
+    { name: 'Contact', path: '/contact' },
     { name: 'My Portal', path: '/portal' },
-    { name: 'Admin Panel', path: '/admin' },
+    { name: 'Admin', path: '/admin' },
   ];
 
   return (
