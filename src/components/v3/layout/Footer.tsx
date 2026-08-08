@@ -25,10 +25,13 @@ export const Footer: React.FC = () => {
         <div className="space-y-3">
           <h4 className="font-heading font-bold text-slate-100 uppercase text-xs tracking-wider">Platform Modules</h4>
           <ul className="space-y-2">
-            <li><Link to="/services" className="hover:text-amber-400 transition-colors">Event Packages</Link></li>
-            <li><Link to="/gallery" className="hover:text-amber-400 transition-colors">Pinterest Gallery</Link></li>
+            <li><Link to="/services" className="hover:text-amber-400 transition-colors">Event Packages &amp; Add-ons</Link></li>
+            <li><Link to="/gallery" className="hover:text-amber-400 transition-colors">Pinterest WebP Gallery</Link></li>
             <li><Link to="/ai-planner" className="hover:text-amber-400 transition-colors">AI Decor Architect</Link></li>
-            <li><Link to="/blogs" className="hover:text-amber-400 transition-colors">SEO Journal &amp; Guides</Link></li>
+            <li><Link to="/projects" className="hover:text-amber-400 transition-colors">VIP Case Studies</Link></li>
+            <li><Link to="/blogs" className="hover:text-amber-400 transition-colors">Design Journal &amp; Guides</Link></li>
+            <li><Link to="/about" className="hover:text-amber-400 transition-colors">About Apex Events</Link></li>
+            <li><Link to="/contact" className="hover:text-amber-400 transition-colors">VIP Consultation Inquiry</Link></li>
             <li><Link to="/portal" className="hover:text-amber-400 transition-colors">Customer Portal</Link></li>
           </ul>
         </div>
