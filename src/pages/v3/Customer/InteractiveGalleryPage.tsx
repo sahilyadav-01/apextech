@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
-import { X } from 'lucide-react';
+import { X, Sparkles, Send } from 'lucide-react';
 import { useV3Store } from '../../../store/v3Store';
 import { GlassCard } from '../../../components/v3/ui/GlassCard';
-
+import { Button } from '../../../components/v3/ui/Button';
+import { useNavigate } from 'react-router-dom';
 
 export const InteractiveGalleryPage: React.FC = () => {
-  const { galleryItems } = useV3Store();
+  const { galleryItems, setAiModalOpen } = useV3Store();
   const [activeCategory, setActiveCategory] = useState('All');
   const [activeLightboxItem, setActiveLightboxItem] = useState<any>(null);
+  const navigate = useNavigate();
 
   const filteredItems = activeCategory === 'All'
     ? galleryItems
     : galleryItems.filter((g) => g.category.toLowerCase() === activeCategory.toLowerCase());
 
   return (
-    <div className="space-y-8 pb-16 font-poppins animate-fade-in">
+    <div className="space-y-8 pb-16 font-poppins animate-fade-in pt-8">
       {/* Title */}
       <div className="text-center max-w-2xl mx-auto space-y-2">
         <h1 className="text-3xl sm:text-5xl font-heading font-extrabold text-slate-100">
@@ -32,10 +34,10 @@ export const InteractiveGalleryPage: React.FC = () => {
             key={cat}
             onClick={() => setActiveCategory(cat)}
             className={`px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all ${
-              activeCategory === cat ? 'bg-amber-500 text-slate-950 shadow-glow-gold' : 'bg-slate-900 text-slate-400 hover:text-slate-200'
+              activeCategory === cat ? 'bg-amber-500 text-slate-950 shadow-glow-gold font-bold' : 'bg-slate-900 text-slate-400 hover:text-slate-200'
             }`}
           >
-            {cat}
+            {cat} ({cat === 'All' ? galleryItems.length : galleryItems.filter(g => g.category.toLowerCase() === cat.toLowerCase()).length})
           </button>
         ))}
       </div>
@@ -79,11 +81,40 @@ export const InteractiveGalleryPage: React.FC = () => {
             >
               <X className="w-6 h-6" />
             </button>
-            <img src={activeLightboxItem.imageUrl} alt={activeLightboxItem.title} className="w-full max-h-[70vh] object-cover" />
-            <div className="p-6 space-y-2 bg-slate-900">
-              <div className="text-amber-400 font-bold text-xs uppercase">{activeLightboxItem.category} • {activeLightboxItem.compressedSize}</div>
-              <h3 className="text-2xl font-heading font-bold text-slate-100">{activeLightboxItem.title}</h3>
-              <p className="text-xs text-slate-400">Venue: {activeLightboxItem.venue} • Event Date: {activeLightboxItem.date}</p>
+            <img src={activeLightboxItem.imageUrl} alt={activeLightboxItem.title} className="w-full max-h-[60vh] object-cover" />
+            <div className="p-6 space-y-4 bg-slate-900">
+              <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-2 border-b border-slate-800 pb-3">
+                <div>
+                  <span className="text-amber-400 font-bold text-xs uppercase">{activeLightboxItem.category} • {activeLightboxItem.compressedSize}</span>
+                  <h3 className="text-2xl font-heading font-bold text-slate-100">{activeLightboxItem.title}</h3>
+                  <p className="text-xs text-slate-400">Venue: {activeLightboxItem.venue} • Event Date: {activeLightboxItem.date}</p>
+                </div>
+
+                <div className="flex items-center gap-3 pt-2 sm:pt-0">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => {
+                      setActiveLightboxItem(null);
+                      setAiModalOpen(true);
+                    }}
+                    icon={<Sparkles className="w-4 h-4 text-amber-400" />}
+                  >
+                    AI Decor Match
+                  </Button>
+                  <Button
+                    variant="primary"
+                    size="sm"
+                    onClick={() => {
+                      setActiveLightboxItem(null);
+                      navigate('/contact');
+                    }}
+                    icon={<Send className="w-4 h-4" />}
+                  >
+                    Inquire This Style
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -91,3 +122,4 @@ export const InteractiveGalleryPage: React.FC = () => {
     </div>
   );
 };
+
